@@ -1,6 +1,6 @@
 /* root variables */
 :root {
-  --main-background: #f5f4f0;
+  --main-background: #fffae9;
   --dark-green-theme: #2a4a53;
   --main-text: #555555;
   --white: #ffffff;
@@ -114,7 +114,9 @@ body {
   height: calc(534.4 / 574 * 100%);
   left: calc(114 / 604 * 100%);
   top: calc(20 / 574 * 100%);
-  background-image: url('../Assets/fish-photobooth/homepage/animated-photobooth-mock/1.png');
+  background-image: url('../Assets/fish-photobooth/homepage/IMG_2644.png');
+  background-size: contain;
+  background repeat: no-repeat;
   transition: opacity 0.3s ease-in-out;
   opacity: 1;
 }
