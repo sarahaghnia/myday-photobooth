@@ -96,16 +96,10 @@ body {
 
 /* photobooth frame */
 .photobooth-mock {
-  z-index: 1;
-  width: calc((375 / 604) * 100%);
-  height: calc(534.4 / 574 * 100%);
-  left: calc(114 / 604 * 100%);
-  top: calc(20 / 574 * 100%);
-  background-image: url('../Assets/fish-photobooth/homepage/IMG_2644.png');
-  background-size: contain;
-  background repeat: no-repeat;
-  transition: opacity 0.3s ease-in-out;
-  opacity: 1;
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 /* button styling */
