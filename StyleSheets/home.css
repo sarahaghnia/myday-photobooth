@@ -54,13 +54,13 @@ body {
 
 .photobooth-container {
   position: relative;
-  width: var(--container-width);
+  width: 80%;
   aspect-ratio: var(--container-aspect-ratio);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
   margin-top: 2vh;
 }
 
