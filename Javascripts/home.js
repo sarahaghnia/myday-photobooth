@@ -148,7 +148,7 @@ function animatePhotobooth(timestamp) {
   requestAnimationFrame(animatePhotobooth);
 }
 
-requestAnimationFrame(animatePhotobooth);
+// requestAnimationFrame(animatePhotobooth);
 
 // button interactions + adding safe navigation
 function addSafeNavigation(button, url, id) {
