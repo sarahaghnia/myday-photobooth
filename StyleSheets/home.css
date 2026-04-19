@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
 /* root variables */
 :root {
   --main-background: #fffae9;
@@ -91,20 +92,6 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   margin: 0 auto 1rem auto;
-}
-
-/* mock elements */
-.photobooth-mock,
-.photostrip-mock,
-.bubbles-mock,
-.fish-mock-1,
-.fish-mock-2,
-.fish-mock-3 {
-  position: absolute;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  object-fit: contain;
 }
 
 /* photobooth frame */
