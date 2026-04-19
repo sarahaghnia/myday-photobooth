@@ -55,14 +55,15 @@ body {
 
 .photobooth-container {
   position: relative;
-  width: 80%;
+  width: var(--container-width;
   aspect-ratio: var(--container-aspect-ratio);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: visible;
+  overflow: hidden;
   margin-top: 2vh;
+  background: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -96,8 +97,9 @@ body {
 
 /* photobooth frame */
 .photobooth-mock {
-  width: 80%;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   display: block;
   margin: 0 auto;
 }
