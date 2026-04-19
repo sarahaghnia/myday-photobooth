@@ -172,9 +172,9 @@ function addSafeNavigation(button, url, id) {
 if (selectButton) {
   ['mouseenter', 'mousedown'].forEach(evt =>
     selectButton.addEventListener(evt, () => {
-      startBubbleAnimation();
-      startFishAnimation();
-      startPhotostripAnimation();
+     // startBubbleAnimation();
+     // startFishAnimation();
+     // startPhotostripAnimation();
     })
   );
 
