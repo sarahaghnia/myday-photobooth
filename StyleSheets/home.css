@@ -97,12 +97,9 @@ body {
 
 /* photobooth frame */
 .photobooth-mock {
-  width: 80%;
-  max-width: 400px;
+  width: 100%;
   height: auto;
-  object-fit: contain;
   display: block;
-  margin: 0 auto;
 }
 
 /* button styling */
