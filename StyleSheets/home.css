@@ -55,8 +55,8 @@ body {
 
 .photobooth-container {
   position: relative;
-  width: var(--container-width;
-  aspect-ratio: var(--container-aspect-ratio);
+  width: 80%
+  max-width: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
