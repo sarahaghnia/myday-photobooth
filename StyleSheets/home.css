@@ -6,8 +6,8 @@
   --main-text: #555555;
   --white: #ffffff;
 
-  --container-width: 500px;
-  --container-aspect-ratio: 604 / 574;
+  --container-width: 80%;
+  --container-aspect-ratio: auto;
 
   --fish-rotation: 7.52deg;
   --strip-rotation: 16.52deg;
