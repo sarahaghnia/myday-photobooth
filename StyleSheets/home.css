@@ -121,59 +121,6 @@ body {
   opacity: 1;
 }
 
-/* photostrip */
-.photostrip-mock {
-  z-index: 2;
-  width: calc((266.99 / 604) * 100%);
-  height: calc(331.94 / 574 * 100%);
-  right: calc(35 / 604 * 100%);
-  top: calc(160 / 574 * 100%);
-  background-image: url('../Assets/fish-photobooth/homepage/photostrip-straight.png');
-  transform: rotate(var(--strip-rotation));
-}
-
-/* bubbles */
-.bubbles-mock {
-  z-index: 2;
-  width: calc((82.09 / 604) * 100%);
-  height: calc(109 / 574 * 100%);
-  left: calc(26 / 604 * 100%);
-  top: calc(2 / 574 * 100%);
-  background-image: url('../Assets/fish-photobooth/homepage/animated-bubbles-home/bubble-1.png');
-  transform: rotate(var(--bubble-rotation));
-}
-
-/* fishes */
-.fish-mock-1 {
-  z-index: 3;
-  width: calc((72.65 / 604) * 100%);
-  height: calc(44.21 / 574 * 100%);
-  left: calc(25 / 604 * 100%);
-  top: calc(251.34 / 574 * 100%);
-  background-image: url('../Assets/fish-photobooth/homepage/goldfish.png');
-  transform: rotate(calc(-1 * var(--fish-rotation)));
-}
-
-.fish-mock-2 {
-  z-index: 3;
-  width: calc((72.65 / 604) * 100%);
-  height: calc(44.21 / 574 * 100%);
-  left: calc(425.46 / 604 * 100%);
-  top: calc(8.69 / 574 * 100%);
-  background-image: url('../Assets/fish-photobooth/homepage/goldfish.png');
-  transform: rotate(var(--fish-rotation));
-}
-
-.fish-mock-3 {
-  z-index: 3;
-  width: calc((72.65 / 604) * 100%);
-  height: calc(44.21 / 574 * 100%);
-  right: calc(60 / 604 * 100%);
-  bottom: calc(10 / 574 * 100%);
-  background-image: url('../Assets/fish-photobooth/homepage/goldfish.png');
-  transform: rotate(calc(-1 * var(--fish-rotation)));
-}
-
 /* button styling */
 .button-container {
   margin-top: 0;
@@ -181,7 +128,7 @@ body {
 
 button {
   color: var(--main-text);
-  font-family: Castoro, serif;
+  font-family: Schoolbell, cursive;
   font-size: 1.5rem;
   font-weight: 400;
   background-color: var(--white);
