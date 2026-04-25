@@ -20,7 +20,8 @@ body {
 /* logo section */
 .logo {
   position: relative;
-  width: 80px;
+  width: 100px;
+  height: auto;
   padding-bottom: 1vh;
 }
 
