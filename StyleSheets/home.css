@@ -34,8 +34,9 @@ body {
 /* logo */
 .logo {
   position: relative;
-  width: 300px !important;
-  height: auto;
+  width: 100px;
+  margin:0 auto;
+  text-align: center;
 }
 
 .logo img {
