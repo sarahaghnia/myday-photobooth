@@ -34,7 +34,7 @@ body {
 /* logo */
 .logo {
   position: relative;
-  width: 300px;
+  width: 300px !important;
   height: auto;
 }
 
