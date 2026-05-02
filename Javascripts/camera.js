@@ -111,12 +111,6 @@ const setupEventListeners = () => {
     startCountdown(capturePhoto);
   });
 
-  window.addEventListener('resize', () => {
-    if (photoStage === 0) moveVideoToHalf(0);
-    else if (photoStage === 1) moveVideoToHalf(1);
-  });
-};
-
 // initialize photo booth
 const initPhotoBooth = () => { setupCamera(); setupEventListeners(); };
 initPhotoBooth();
