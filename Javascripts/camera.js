@@ -18,7 +18,7 @@ let photoStage = 0; // 0=top,1=middle,2=bottom,3=done
 const moveVideoToHalf = i => {
   const { video } = elements;
   video.style.display = 'block';
-  video.style.top = i === 0 ? '0' : i === 1? '33,33%' : '66,66%'
+  video.style.top = i === 0 ? '0' : i === 1? '33.33%' : '6666%'
   video.style.left = '0';
   video.style.width = '100%';
   video.style.height = '33.33%';
@@ -73,7 +73,7 @@ const finalizePhotoStrip = () => {
   frame.src = 'Assets/fish-photobooth/camerapage/frame.png';
   frame.onload = () => {
     ctx.drawImage(frame, 0, 0, WIDTH, HEIGHT);
-    localStorage.setItem('photoStrip', canvas.toDataURL('image/png'));
+    localStorage.setItem('photoStrip', canvas.toDataURL('image/jpeg', 0.5));
     setTimeout(() => window.location.href = 'final.html', 50);
   };
   frame.complete && frame.onload();
