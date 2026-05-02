@@ -43,7 +43,8 @@ const startCountdown = callback => {
 // capture photo
 const capturePhoto = () => {
   const { video, ctx, takePhotoBtn } = elements;
-  const yOffset = photoStage === 0 ? 0 : photoStage === 1 ? THIRD : THIRD * 2;
+  const slotY = [60,888, 1716];
+  const yOffset = slotY[photoStage];
   const vW = video.videoWidth, vH = video.videoHeight;
   const targetAspect = WIDTH / THIRD, vAspect = vW / vH;
   let sx, sy, sw, sh;
