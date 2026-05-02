@@ -91,7 +91,7 @@ const downloadPhoto = () => {
 const setupCamera = () => {
   navigator.mediaDevices.getUserMedia({ video: { width: { ideal: 2560 }, height: { ideal: 1440 }, facingMode: 'user' }, audio: false })
     .then(stream => { elements.video.srcObject = stream; elements.video.play(); moveVideoToHalf(0); })
-    .catch(err => alert('Camera access failed: ' + err));
+    .catch(err => alert('Camera access failed: ' + err.name + ' - ' + err.message));
 };
 
 // setup events
