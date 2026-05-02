@@ -1,5 +1,5 @@
 // constants
-const WIDTH = 1176, HEIGHT = 2940, HALF = HEIGHT / 2;
+const WIDTH = 1176, HEIGHT = 2940, HALF = HEIGHT / 3;
 
 // dom elements
 const elements = {
@@ -11,7 +11,7 @@ const elements = {
   countdownEl: document.querySelector('.countdown-timer')
 };
 
-let photoStage = 0; // 0=top,1=bottom,2=done
+let photoStage = 0; // 0=top,1=middle,2=bottom,3=done
 
 // move video to half
 const moveVideoToHalf = i => {
@@ -43,9 +43,9 @@ const startCountdown = callback => {
 // capture photo
 const capturePhoto = () => {
   const { video, ctx, takePhotoBtn } = elements;
-  const yOffset = photoStage === 0 ? 0 : photoStage === 1 ? THRIRD : THIRD * 2;
+  const yOffset = photoStage === 0 ? 0 : photoStage === 1 ? THIRD : THIRD * 2;
   const vW = video.videoWidth, vH = video.videoHeight;
-  const targetAspect = WIDTH / HALF, vAspect = vW / vH;
+  const targetAspect = WIDTH / THIRD, vAspect = vW / vH;
   let sx, sy, sw, sh;
 
   if (vAspect > targetAspect) { sh = vH; sw = vH * targetAspect; sx = (vW - sw) / 2; sy = 0; }
@@ -99,7 +99,7 @@ const setupEventListeners = () => {
   const { takePhotoBtn, downloadBtn } = elements;
 
   takePhotoBtn.addEventListener('click', () => {
-    if (photoStage > 2) return;
+    if (photoStage >= 3) return;
     takePhotoBtn.disabled = true;
     startCountdown(capturePhoto);
   });
