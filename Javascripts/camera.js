@@ -59,7 +59,8 @@ const capturePhoto = () => {
 
   photoStage++;
   if (photoStage === 1) { moveVideoToHalf(1); takePhotoBtn.disabled = false; }
-  else if (photoStage === 2) finalizePhotoStrip();
+  else if (photoStage === 2) { moveVideoToHalf(2); takePhotoBtn.disabled = false, }
+  else if (photoStage === 3) finalizePhotoStrip()  ();
 };
 
 // finalize photo strip
@@ -98,7 +99,7 @@ const setupEventListeners = () => {
   const { takePhotoBtn, downloadBtn } = elements;
 
   takePhotoBtn.addEventListener('click', () => {
-    if (photoStage > 1) return;
+    if (photoStage > 2) return;
     takePhotoBtn.disabled = true;
     startCountdown(capturePhoto);
   });
