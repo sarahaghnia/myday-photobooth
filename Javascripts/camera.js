@@ -17,7 +17,7 @@ let photoStage = 0; // 0=top,1=middle,2=bottom,3=done
 const moveVideoToHalf = i => {
   const { video } = elements;
   video.style.display = 'block';
-  video.style.top = i === 0 ? '0' : '33,33%';
+  video.style.top = i === 0 ? '0' : i === 1? '33,33%' : '66,66%'
   video.style.left = '0';
   video.style.width = '100%';
   video.style.height = '50%';
@@ -60,7 +60,7 @@ const capturePhoto = () => {
   photoStage++;
   if (photoStage === 1) { moveVideoToHalf(1); takePhotoBtn.disabled = false; }
   else if (photoStage === 2) { moveVideoToHalf(2); takePhotoBtn.disabled = false, }
-  else if (photoStage === 3) finalizePhotoStrip()  ();
+  else if (photoStage === 3) finalizePhotoStrip();
 };
 
 // finalize photo strip
