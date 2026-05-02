@@ -1,4 +1,3 @@
-alert('script loaded!');
 // clear local storage
 window.addEventListener('DOMContentLoaded', () => localStorage.removeItem('photoStrip'));
 
