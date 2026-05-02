@@ -21,8 +21,8 @@ const drawPhoto = img => {
   if (photoStage >= 3) return;
   const { ctx } = elements;
   const slotY = [60,888,1716];
-  const yOffset. = slotY[photoStage];
-  const imgAspect = img.width / img.height, targetAspect =1056 /768;
+  const yOffset = slotY[photoStage];
+  const imgAspect = img.width / img.height, targetAspect = 1056 / 768;
   let sx, sy, sw, sh;
 
   if (imgAspect > targetAspect) { sh = img.height; sw = img.height * targetAspect; sx = (img.width - sw) / 2; sy = 0; }
