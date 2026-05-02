@@ -2,7 +2,7 @@
 window.addEventListener('DOMContentLoaded', () => localStorage.removeItem('photoStrip'));
 
 // constants
-const WIDTH = 1176, HEIGHT = 1470, HALF = HEIGHT / 2;
+const WIDTH = 1176, HEIGHT = 2940, THIRD = HEIGHT / 3;
 
 // dom elements
 const elements = {
@@ -14,21 +14,21 @@ const elements = {
   downloadBtn: document.getElementById('downloadBtn')
 };
 
-let photoStage = 0; // 0=top,1=bottom,2=donee
+let photoStage = 0; // 0=top,1=middle, 2=bottom, 3=donee
 
 // draw photo
 const drawPhoto = img => {
   const { ctx } = elements;
-  const yOffset = photoStage === 0 ? 0 : HALF;
-  const imgAspect = img.width / img.height, targetAspect = WIDTH / HALF;
+  const yOffset = photoStage === 0 ? 0 : photoStage === 1? THIRD: THIRD * 2;
+  const imgAspect = img.width / img.height, targetAspect = WIDTH / HALF WIDTH / THIRD;
   let sx, sy, sw, sh;
 
   if (imgAspect > targetAspect) { sh = img.height; sw = img.height * targetAspect; sx = (img.width - sw) / 2; sy = 0; }
   else { sw = img.width; sh = img.width / targetAspect; sx = 0; sy = (img.height - sh) / 2; }
 
-  ctx.drawImage(img, sx, sy, sw, sh, 0, yOffset, WIDTH, HALF);
+  ctx.drawImage(img, sx, sy, sw, sh, 0, yOffset, WIDTH, THIRD);
   photoStage++;
-  if (photoStage === 2) finalizePhotoStrip();
+  if (photoStage === 3) finalizePhotoStrip();
 };
 
 // finalize photo strip
