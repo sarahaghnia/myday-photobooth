@@ -28,7 +28,7 @@ const drawPhoto = img => {
   if (imgAspect > targetAspect) { sh = img.height; sw = img.height * targetAspect; sx = (img.width - sw) / 2; sy = 0; }
   else { sw = img.width; sh = img.width / targetAspect; sx = 0; sy = (img.height - sh) / 2; }
 
-  ctx.drawImage(img, sx, sy, sw, sh, 0, yOffset, WIDTH, THIRD);
+  ctx.drawImage(img, sx, sy, sw, sh, 60, yOffset, 1056, 768);
   photoStage++;
   if (photoStage === 3) finalizePhotoStrip();
 };
