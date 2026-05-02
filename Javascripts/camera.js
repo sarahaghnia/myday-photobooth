@@ -111,7 +111,6 @@ const setupEventListeners = () => {
     startCountdown(capturePhoto);
   });
 
-  downloadBtn.addEventListener('click', downloadPhoto);
   window.addEventListener('resize', () => {
     if (photoStage === 0) moveVideoToHalf(0);
     else if (photoStage === 1) moveVideoToHalf(1);
