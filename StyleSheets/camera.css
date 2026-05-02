@@ -45,7 +45,7 @@ body {
   .photobooth-container {
     width: 90vw;
     max-width: none;
-    aspect-ratio: 588 / 735;
+    aspect-ratio: 1176 / 2940;
   }
 }
 
@@ -78,7 +78,7 @@ body {
 /* canvas and video */
 #finalCanvas {
   width: 100%;
-  height: 100%;
+  height: auto;
   display: block;
 }
 
