@@ -43,7 +43,7 @@ const startCountdown = callback => {
 // capture photo
 const capturePhoto = () => {
   const { video, ctx, takePhotoBtn } = elements;
-  const yOffset = photoStage === 0 ? 0 : HALF;
+  const yOffset = photoStage === 0 ? 0 : photoStage === 1 ? THRIRD : THIRD * 2;
   const vW = video.videoWidth, vH = video.videoHeight;
   const targetAspect = WIDTH / HALF, vAspect = vW / vH;
   let sx, sy, sw, sh;
@@ -54,7 +54,7 @@ const capturePhoto = () => {
   ctx.save();
   ctx.translate(WIDTH, 0);
   ctx.scale(-1, 1);
-  ctx.drawImage(video, sx, sy, sw, sh, 0, yOffset, WIDTH, HALF);
+  ctx.drawImage(video, sx, sy, sw, sh, 0, yOffset, WIDTH, THIRD);
   ctx.restore();
 
   photoStage++;
