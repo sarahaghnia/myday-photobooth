@@ -61,7 +61,7 @@ const capturePhoto = () => {
 
   photoStage++;
   if (photoStage === 1) { moveVideoToHalf(1); takePhotoBtn.disabled = false; }
-  else if (photoStage === 2) { moveVideoToHalf(2); takePhotoBtn.disabled = false, }
+  else if (photoStage === 2) { moveVideoToHalf(2); takePhotoBtn.disabled = false; }
   else if (photoStage === 3) finalizePhotoStrip();
 };
 
