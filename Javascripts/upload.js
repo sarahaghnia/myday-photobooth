@@ -20,7 +20,8 @@ let photoStage = 0; // 0=top,1=middle, 2=bottom, 3=donee
 const drawPhoto = img => {
   if (photoStage >= 3) return;
   const { ctx } = elements;
-  const yOffset = photoStage === 0 ? 0 : photoStage === 1 ? THIRD: THIRD * 2;
+  const slotY = [60,888,1716];
+  const yOffset. = slotY[photoStage];
   const imgAspect = img.width / img.height, targetAspect = WIDTH / THIRD;
   let sx, sy, sw, sh;
 
