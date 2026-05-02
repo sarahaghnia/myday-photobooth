@@ -56,12 +56,8 @@ elements.readyBtn.addEventListener('click', () => {
 // download photo
 const downloadPhoto = () => {
   const { canvas } = elements;
-  canvas.toBlob(blob => {
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'photo-strip.png';
-    a.click();
-  }, 'image/png');
+  const url = canvas.toDataURL('image/png');
+  window.open(url, '_blank');
 };
 
 // upload button
