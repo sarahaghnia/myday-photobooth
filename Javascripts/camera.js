@@ -55,7 +55,7 @@ const capturePhoto = () => {
   ctx.save();
   ctx.translate(WIDTH, 0);
   ctx.scale(-1, 1);
-  ctx.drawImage(video, sx, sy, sw, sh, 0, yOffset, WIDTH, THIRD);
+  ctx.drawImage(video, sx, sy, sw, sh, 60, yOffset, 1056, 768);
   ctx.restore();
 
   photoStage++;
