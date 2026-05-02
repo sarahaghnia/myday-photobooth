@@ -50,7 +50,6 @@ const finalizePhotoStrip = () => {
 // ready button
 elements.readyBtn.addEventListener('click', () => {
   localStorage.setItem('photoStrip',elements.canvas.toDataURL('image/jpeg',0.5));
-  alert('saved' + localStorage.getItem('photoStrip')?.length);
   window.location.href = 'final.html';
 });
 
