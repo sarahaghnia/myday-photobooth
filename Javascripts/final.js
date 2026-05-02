@@ -1,5 +1,5 @@
 // constants
-const WIDTH = 1176, HEIGHT = 1470;
+const WIDTH = 1176, HEIGHT = 2940;
 
 // dom elements
 const canvas = document.getElementById('finalCanvas'),
@@ -113,7 +113,8 @@ resetBtn.addEventListener('click', () => { stickers = []; drawCanvas(); });
 
 // download
 downloadBtn.addEventListener('click', () => {
-  canvas.toBlob(blob => { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'fish-photobooth.png'; a.click(); }, 'image/png');
+  const url = canvas.toDataURL('image/png');
+      window.open(url, '_blank');
 });
 
 // home
