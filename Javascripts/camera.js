@@ -105,7 +105,7 @@ const setupEventListeners = () => {
     takePhotoBtn.disabled = true;
     startCountdown(capturePhoto);
   });
-  document.addEvntListener('click', () => {
+  document.addEventListener('click', () => {
     if (photoStage >= 3) return;
     takePhotoBtn.disabled = true;
     startCountdown(capturePhoto);
