@@ -1,3 +1,4 @@
+alert('camera script loaded!');
 // constants
 const WIDTH = 1176, HEIGHT = 2940;
 
@@ -20,7 +21,7 @@ const moveVideoToHalf = i => {
   video.style.top = i === 0 ? '0' : i === 1? '33,33%' : '66,66%'
   video.style.left = '0';
   video.style.width = '100%';
-  video.style.height = '50%';
+  video.style.height = '33.33%';
 };
 
 // countdown
