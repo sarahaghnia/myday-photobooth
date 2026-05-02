@@ -1,5 +1,5 @@
 // constants
-const WIDTH = 1176, HEIGHT = 2940, HALF = HEIGHT / 3;
+const WIDTH = 1176, HEIGHT = 2940, THIRD = HEIGHT / 3;
 
 // dom elements
 const elements = {
