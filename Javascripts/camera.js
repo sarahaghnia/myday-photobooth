@@ -17,7 +17,7 @@ let photoStage = 0; // 0=top,1=middle,2=bottom,3=done
 const moveVideoToHalf = i => {
   const { video } = elements;
   video.style.display = 'block';
-  video.style.top = i === 0 ? '0' : '50%';
+  video.style.top = i === 0 ? '0' : '33,33%';
   video.style.left = '0';
   video.style.width = '100%';
   video.style.height = '50%';
