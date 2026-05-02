@@ -17,7 +17,8 @@ const elements = {
 let photoStage = 0; // 0=top,1=middle, 2=bottom, 3=donee
 
 // draw photo
-const drawPhoto = img => if (photoStage >= 3) return;{
+const drawPhoto = img => {
+  if (photoStage >= 3) return;
   const { ctx } = elements;
   const yOffset = photoStage === 0 ? 0 : photoStage === 1? THIRD: THIRD * 2;
   const imgAspect = img.width / img.height, targetAspect = WIDTH / THIRD;
