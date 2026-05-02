@@ -46,7 +46,7 @@ const capturePhoto = () => {
   const slotY = [60,888, 1716];
   const yOffset = slotY[photoStage];
   const vW = video.videoWidth, vH = video.videoHeight;
-  const targetAspect = WIDTH / THIRD, vAspect = vW / vH;
+  const targetAspect = 1056 / 768, vAspect = vW /vH;
   let sx, sy, sw, sh;
 
   if (vAspect > targetAspect) { sh = vH; sw = vH * targetAspect; sx = (vW - sw) / 2; sy = 0; }
