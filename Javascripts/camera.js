@@ -105,6 +105,11 @@ const setupEventListeners = () => {
     takePhotoBtn.disabled = true;
     startCountdown(capturePhoto);
   });
+  document.addEvntListener('click', () => {
+    if (photoStage >= 3) return;
+    takePhotoBtn.disabled = true;
+    startCountdown(capturePhoto);
+  });
 
   downloadBtn.addEventListener('click', downloadPhoto);
   window.addEventListener('resize', () => {
