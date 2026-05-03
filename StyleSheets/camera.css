@@ -11,7 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
   padding-top: 1rem;
   padding-bottom: 2rem;
@@ -44,7 +44,7 @@ body {
 /* mobile */
 @media (max-width: 768px) {
   .photobooth-container {
-    width: 55vw;
+    width: 40vw;
     max-width: none;
     aspect-ratio: 1176 / 2940;
   }
