@@ -13,10 +13,12 @@ let photoStage = 0;
 const moveVideoToHalf = i => {
  const { video } = elements;
  video.style.display = 'block';
- video.style.top = i === 0 ? '0' : i === 1 ? '33.33%' : '66.66%';
- video.style.left = '0';
- video.style.width = '100%';
- video.style.height = '33.33%';
+ video.style.position = 'absolute';
+ video.style.top = i === 0 ? '2.04%' : i === 1 ? '35.37%' : '68.7%';
+ video.style.left = '5.1%';
+ video.style.width = '89.8%';
+ video.style.height = '26.12%';
+ video.style.objectFit = 'cover';
 };
 
 const startCountdown = callback => {
