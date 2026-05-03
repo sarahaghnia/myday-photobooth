@@ -10,16 +10,13 @@ const elements = {
 
 let photoStage = 0;
 
-// video always fills full container, just moves position
-const moveVideoToSlot = i => {
+const moveVideoToHalf = i => {
  const { video } = elements;
  video.style.display = 'block';
- video.style.position = 'absolute';
- video.style.width = '100%';
- video.style.height = '100%';
- video.style.top = '0';
+ video.style.top = i === 0 ? '0' : i === 1 ? '33.33%' : '66.66%';
  video.style.left = '0';
- video.style.objectFit = 'cover';
+ video.style.width = '100%';
+ video.style.height = '33.33%';
 };
 
 const startCountdown = callback => {
@@ -62,13 +59,9 @@ const capturePhoto = () => {
  ctx.restore();
 
  photoStage++;
-
- if (photoStage < 3) {
-   takePhotBtn.disabled = false;
-   takePhotBtn.textContent = `Photo ${photoStage + 1} of 3 — tap!`;
- } else {
-   finalizePhotoStrip();
- }
+ if (photoStage === 1) { moveVideoToHalf(1); takePhotBtn.disabled = false; }
+ else if (photoStage === 2) { moveVideoToHalf(2); takePhotBtn.disabled = false; }
+ else if (photoStage === 3) finalizePhotoStrip();
 };
 
 const finalizePhotoStrip = () => {
@@ -85,8 +78,36 @@ const finalizePhotoStrip = () => {
 };
 
 const setupCamera = () => {
- const { video } = elements;
  navigator.mediaDevices.getUserMedia({
    video: { facingMode: 'user' },
    audio: false
  })
+ .then(stream => {
+   elements.video.srcObject = stream;
+   elements.video.play();
+   moveVideoToHalf(0);
+ })
+ .catch(err => alert('Camera failed: ' + err.name + ' - ' + err.message));
+};
+
+const setupEventListeners = () => {
+ const { takePhotBtn } = elements;
+ takePhotBtn.addEventListener('click', e => {
+   e.stopPropagation();
+   if (photoStage >= 3) return;
+   takePhotBtn.disabled = true;
+   startCountdown(capturePhoto);
+ });
+ document.addEventListener('click', () => {
+   if (photoStage >= 3) return;
+   takePhotBtn.disabled = true;
+   startCountdown(capturePhoto);
+ });
+};
+
+const initPhotoBooth = () => {
+ setupCamera();
+ setupEventListeners();
+};
+
+initPhotoBooth();
