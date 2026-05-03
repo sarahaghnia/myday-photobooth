@@ -19,7 +19,7 @@ body {
 .logo {
  position: relative;
  z-index: 10;
- width: 150px;
+ width: 200px;
  height: auto;
  padding-bottom: 1vh;
 }
@@ -31,8 +31,8 @@ body {
 
 .photobooth-container {
  position: relative;
- width: 30vmin;
- max-width: 400px;
+ width: 60vmin;
+ max-width: 588px;
  aspect-ratio: 1176 / 2940;
  background: #D5E8EB;
  overflow: hidden;
@@ -40,7 +40,7 @@ body {
 
 @media (max-width: 768px) {
  .photobooth-container {
-   width: 38vw;
+   width: 55vw;
    max-width: none;
    aspect-ratio: 1176 / 2940;
  }
@@ -75,4 +75,95 @@ body {
  width: 100%;
  height: 100%;
  display: block;
+}
+
+#liveVideo {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ transform: scaleX(-1);
+ z-index: 1;
+ display: none;
+}
+
+.frame-overlay {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: auto;
+ pointer-events: none;
+ z-index: 3;
+}
+
+.controls {
+ margin-top: 20px;
+ display: flex;
+ gap: 12px;
+ justify-content: center;
+}
+
+button {
+ padding: 10px 16px;
+ font-size: 16px;
+ cursor: pointer;
+ color: #1e1e1e;
+ font-family: Castoro, serif;
+ font-weight: 400;
+ background-color: #FFF;
+ border: 1px solid #1e1e1e;
+ border-radius: 0.5rem;
+ text-align: center;
+ transition: transform 0.2s ease-in-out;
+}
+
+button:hover {
+ transform: scale(1.05);
+}
+
+#takePhoto {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ gap: 0.56169rem;
+ width: 10rem;
+ height: 3rem;
+ padding: 0.5rem 1rem;
+ background-color: #FFF;
+}
+
+.bubble-container {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ aspect-ratio: 588 / 735;
+ overflow: hidden;
+ pointer-events: none;
+ z-index: 100;
+}
+
+.bubble {
+ position: absolute;
+ bottom: -100px;
+ opacity: 1;
+ transform-origin: center;
+ animation-name: riseSpin;
+ animation-timing-function: linear;
+ animation-fill-mode: forwards;
+}
+
+@keyframes riseSpin {
+ 0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
+ 80% { opacity: 1; }
+ 100% { transform: translateY(-110vh) rotate(360deg) scale(0.5); opacity: 0; }
+}
+
+.instruction {
+ font-size: 0.9rem;
+ color: #666;
+ margin-bottom: 0.5rem;
 }
