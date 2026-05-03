@@ -12,16 +12,17 @@ body {
  align-items: center;
  justify-content: flex-start;
  min-height: 100vh;
- padding-top: 1rem;
+ padding-top: 2rem;
  padding-bottom: 2rem;
+ gap: 1rem;
 }
 
 .logo {
  position: relative;
  z-index: 10;
- width: 200px;
+ width: 120px;
  height: auto;
- padding-bottom: 1vh;
+ padding-bottom: 0;
 }
 
 .logo img {
