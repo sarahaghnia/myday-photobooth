@@ -34,7 +34,7 @@ body {
 /* photobooth container */
 .photobooth-container {
   position: relative;
-  width: 60vmin;
+  width: 42vmin;
   max-width: 588px;
   aspect-ratio: 1176 / 2940;
   background: #D5E8EB;
@@ -44,7 +44,7 @@ body {
 /* mobile */
 @media (max-width: 768px) {
   .photobooth-container {
-    width: 90vw;
+    width: 55vw;
     max-width: none;
     aspect-ratio: 1176 / 2940;
   }
