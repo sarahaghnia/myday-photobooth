@@ -39,11 +39,18 @@ body {
  overflow: hidden;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
  .photobooth-container {
-   width: 40vw;
+   width: 35vw;
    max-width: none;
    aspect-ratio: 1176 / 2940;
+ }
+}
+@media (max-width: 480) {
+ .photbooth-container {
+  width: 55vw;
+  max width: none;
+  aspect-ratio: 1176 / 2940;
  }
 }
 
