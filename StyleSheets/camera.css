@@ -31,8 +31,8 @@ body {
 
 .photobooth-container {
  position: relative;
- width: 60vmin;
- max-width: 588px;
+ width: 25vmin;
+ max-width: 350px;
  aspect-ratio: 1176 / 2940;
  background: #D5E8EB;
  overflow: hidden;
@@ -82,7 +82,7 @@ body {
  top: 0;
  left: 0;
  width: 100%;
- height: 100%;
+ height: 33.33%;
  object-fit: cover;
  transform: scaleX(-1);
  z-index: 1;
