@@ -108,6 +108,8 @@ const setupEventListeners = () => {
 };
 
 const initPhotoBooth = () => {
+ elements.canvas.width = 1176;
+ elements.canvas.height = 2940;
  setupCamera();
  setupEventListeners();
 };
