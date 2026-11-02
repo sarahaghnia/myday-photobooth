@@ -32,24 +32,22 @@ body {
 
 .photobooth-container {
  position: relative;
- width: 20vw !important;
- max-width: 250px !important;
- position: relative !important;
- overflow: hidden !important;
+ width: 20vw;
+ max-width: 250px;
+ aspect-ratio: 1176 / 2940;
+ overflow: hidden;
 }
 
 @media (max-width: 1024px) {
  .photobooth-container {
    width: 35vw;
    max-width: none;
-   aspect-ratio: 1176 / 2940;
  }
 }
-@media (max-width: 480) {
+@media (max-width: 480px) {
  .photbooth-container {
-  width: 55vw;
+  width: 60vw;
   max width: none;
-  aspect-ratio: 1176 / 2940;
  }
 }
 
