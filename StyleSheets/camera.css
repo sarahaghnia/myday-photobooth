@@ -32,16 +32,14 @@ body {
 
 .photobooth-container {
  position: relative;
- width: 20vw;
- max-width: 250px;
+ width: min(88vw, 420px);
  aspect-ratio: 1176 / 2940;
  overflow: hidden;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1025px) {
  .photobooth-container {
-   width: 35vw;
-   max-width: none;
+   width: min (35vw, 300px);
  }
 }
 @media (max-width: 480px) {
@@ -78,8 +76,7 @@ body {
 
 #finalCanvas {
  position: absolute;
- top: 0;
- left: 0;
+ inset: 0;
  width: 100%;
  height: 100%;
 }
@@ -102,7 +99,7 @@ body {
  left: 0;
  width: 100%;
  height: 100%;
- object-fit: fill;
+ object-fit: contain;
  pointer-events: none;
  z-index: 3;
 }
