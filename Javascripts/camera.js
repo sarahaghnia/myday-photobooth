@@ -22,7 +22,7 @@ const moveVideoToHalf = i => {
  video.style.top = `${(slotY[i] / HEIGHT) * 100}%`;
  video.style.left = `${(60 / WIDTH) * 100}%`;
  video.style.width = `${(1056 / WIDTH) * 100}%` ;
- video.style.height = `${slotHeight / HEIGHT) * 100}%`;
+ video.style.height = `${(slotHeight / HEIGHT) * 100}%`;
  
  video.style.objectFit = 'cover';
 };
