@@ -1,162 +1,181 @@
 * {
- box-sizing: border-box;
- margin: 0;
- padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
- font-family: sans-serif;
- background: #eee;
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: flex-start;
- min-height: 100vh;
- padding-top: 2rem;
- padding-bottom: 2rem;
- gap: 1rem;
+  font-family: sans-serif;
+  background: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  gap: 1rem;
 }
 
 .logo {
- position: relative;
- z-index: 10;
- width: 120px;
- height: auto;
- padding-bottom: 0;
+  position: relative;
+  z-index: 10;
+  width: 120px;
+  height: auto;
+  padding-bottom: 0;
 }
 
 .logo img {
- width: 100%;
- height: auto;
+  width: 100%;
+  height: auto;
 }
 
+/* PHOTOBOOTH CONTAINER */
 .photobooth-container {
- position: relative;
- width: min(88vw, 420px);
- aspect-ratio: 1176 / 2940;
- overflow: hidden;
+  position: relative;
+  width: min(88vw, 420px);
+  aspect-ratio: 1176 / 2940;
+  overflow: hidden;
 }
 
+/* DESKTOP */
 @media (min-width: 1025px) {
- .photobooth-container {
-   width: min (35vw, 300px);
- }
+  .photobooth-container {
+    width: min(35vw, 300px);
+  }
 }
+
+/* MOBILE */
 @media (max-width: 480px) {
- .photbooth-container {
-  width: 60vw;
-  max width: none;
- }
+  .photobooth-container {
+    width: 60vw;
+    max-width: none;
+  }
+}
 
+/* LIVE CAMERA */
 #liveVideo {
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 26.12%;
- object-fit: cover;
- transform: scaleX(-1);
- z-index: 1;
- display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 26.12%;
+  object-fit: cover;
+  transform: scaleX(-1);
+  z-index: 1;
+  display: none;
 }
 
+/* COUNTDOWN */
 .countdown-timer {
- position: absolute;
- top: 1rem;
- left: 50%;
- transform: translateX(-50%);
- z-index: 100;
- display: flex;
- align-items: center;
- justify-content: center;
- width: 4.66669rem;
- height: 2.8rem;
- padding: 0.8485rem;
- border-radius: 0.75rem;
- border: 1.358px solid #1E1E1E;
- background: #FFF;
- color: #1E1E1E;
- text-align: center;
- font-family: Castoro, serif;
- font-size: 1.697rem;
- font-weight: 400;
- line-height: 1;
- pointer-events: none;
- transition: none;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.66669rem;
+  height: 2.8rem;
+  padding: 0.8485rem;
+  border-radius: 0.75rem;
+  border: 1.358px solid #1E1E1E;
+  background: #FFF;
+  color: #1E1E1E;
+  text-align: center;
+  font-family: Castoro, serif;
+  font-size: 1.697rem;
+  font-weight: 400;
+  line-height: 1;
+  pointer-events: none;
+  transition: none;
 }
 
+/* FINAL CANVAS */
 #finalCanvas {
- position: absolute;
- inset: 0;
- width: 100%;
- height: 100%;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
+/* FRAME OVERLAY */
 .frame-overlay {
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- object-fit: contain;
- pointer-events: none;
- z-index: 3;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  z-index: 3;
 }
 
+/* CONTROLS */
 .controls {
- display: none;
+  display: none;
 }
 
 #takePhoto {
- display: flex;
- justify-content: center;
- align-items: center;
- gap: 0.56169rem;
- width: 10rem;
- height: 3rem;
- padding: 0.5rem 1rem;
- background-color: #FFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.56169rem;
+  width: 10rem;
+  height: 3rem;
+  padding: 0.5rem 1rem;
+  background-color: #FFF;
 }
 
+/* BUBBLES */
 .bubble-container {
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- aspect-ratio: 588 / 735;
- overflow: hidden;
- pointer-events: none;
- z-index: 100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 588 / 735;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 100;
 }
 
 .bubble {
- position: absolute;
- bottom: -100px;
- opacity: 1;
- transform-origin: center;
- animation-name: riseSpin;
- animation-timing-function: linear;
- animation-fill-mode: forwards;
+  position: absolute;
+  bottom: -100px;
+  opacity: 1;
+  transform-origin: center;
+  animation-name: riseSpin;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
 @keyframes riseSpin {
- 0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; }
- 80% { opacity: 1; }
- 100% { transform: translateY(-110vh) rotate(360deg) scale(0.5); opacity: 0; }
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-110vh) rotate(360deg) scale(0.5);
+    opacity: 0;
+  }
 }
 
+/* INSTRUCTION */
 .instruction {
- position: fixed;
- bottom: max(24px, ev(safe-area-inset-bottom));
- left: 50%;
- transform: translateX(-50%);
- z-index: 200;
- padding: 12px 22px;
- background: white;
- border: 1px solid #1e1e1e;
- border-radius: 30px;
- font-family: Castoro, serif;
- font-size: 14px;
- white-spaceL nowrap;
- pointer-events: none;
+  position: fixed;
+  bottom: max(24px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  padding: 12px 22px;
+  background: white;
+  border: 1px solid #1e1e1e;
+  border-radius: 30px;
+  font-family: Castoro, serif;
+  font-size: 14px;
+  white-space: nowrap;
+  pointer-events: none;
 }
