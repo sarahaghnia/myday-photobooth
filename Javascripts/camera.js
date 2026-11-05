@@ -12,12 +12,18 @@ let photoStage = 0;
 
 const moveVideoToHalf = i => {
  const { video } = elements;
+
+ const slotY = [60, 888, 1716];
+ const slotHeight =768;
+ 
  video.style.display = 'block';
  video.style.position = 'absolute';
- video.style.top = i === 0 ? '2.04%' : i === 1 ? '35.37%' : '68.7%';
- video.style.left = '5.1%';
- video.style.width = '89.8%';
- video.style.height = '26.12%';
+ 
+ video.style.top = `${(slotY[i] / HEIGHT) * 100}%`;
+ video.style.left = `${(60 / WIDTH) * 100}%`;
+ video.style.width = `${(1056 / WIDTH) * 100}%` ;
+ video.style.height = `${slotHeight / HEIGHT) * 100}%`;
+ 
  video.style.objectFit = 'cover';
 };
 
