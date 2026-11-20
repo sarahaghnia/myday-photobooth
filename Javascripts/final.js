@@ -15,17 +15,27 @@ const canvas = document.getElementById('finalCanvas'),
 
 // sticker state
 let stickers = [], dragOffset = { x: 0, y: 0 }, selectedSticker = null;
+let photoReady = false;
 
 // load photo
 const finalImage = new Image(), dataURL = localStorage.getItem('photoStrip');
 if (dataURL) {
+  finalImage.onload = () => {
+    photoReady = true;
+    drawCanvas();
+    downloadBtn.disabled = false;
+  };
+  finalImage.onerror = () => alert('Could not load your photo strip. Please go back and try again.');
   finalImage.src = dataURL;
-  finalImage.onload = drawCanvas;
   localStorage.removeItem('photoStrip');
-} else alert("No photo found!");
+} else {
+  downloadBtn.disabled = true;
+  alert("No photo found!");
+}
 
 // draw canvas
 function drawCanvas() {
+  if (!photoReady) return;
   ctx.clearRect(0, 0, WIDTH, HEIGHT);
   ctx.drawImage(finalImage, 0, 0, WIDTH, HEIGHT);
   stickers.forEach(s => ctx.drawImage(s.img, s.x, s.y, s.width, s.height));
@@ -34,7 +44,6 @@ function drawCanvas() {
 // add sticker
 function addSticker(src) {
   const img = new Image();
-  img.src = src;
   img.onload = () => {
     stickers.push({
       img,
@@ -46,6 +55,7 @@ function addSticker(src) {
     });
     drawCanvas();
   };
+  img.src = src;
 }
 
 // pointer position
@@ -84,23 +94,19 @@ function pointerMove(e) {
 }
 function pointerUp() { if (selectedSticker) selectedSticker.dragging = false; selectedSticker = null; }
 
-// mouse events
 canvas.addEventListener('mousedown', pointerDown);
 canvas.addEventListener('mousemove', pointerMove);
 canvas.addEventListener('mouseup', pointerUp);
 canvas.addEventListener('mouseleave', pointerUp);
-
-// touch events
 canvas.addEventListener('touchstart', pointerDown);
 canvas.addEventListener('touchmove', pointerMove);
 canvas.addEventListener('touchend', pointerUp);
 canvas.addEventListener('touchcancel', pointerUp);
 
-// stickers
 addFishBtn.addEventListener('click', () => addSticker('Assets/fish-photobooth/camerapage/stickers/fish.png'));
 addOctopusBtn.addEventListener('click', () => addSticker('Assets/fish-photobooth/camerapage/stickers/octopus.png'));
 
-const seaweedImages = ['Assets/fish-photobooth/camerapage/stickers/seaweed1.png','Assets/fish-photobooth/camerapage/stickers/seaweed2.png'], 
+const seaweedImages = ['Assets/fish-photobooth/camerapage/stickers/seaweed1.png','Assets/fish-photobooth/camerapage/stickers/seaweed2.png'],
       bubbleImages = ['Assets/fish-photobooth/camerapage/stickers/bubble1.png','Assets/fish-photobooth/camerapage/stickers/bubble2.png'];
 let seaweedIndex = 0, bubbleIndex = 0;
 
@@ -108,19 +114,28 @@ addSeaweedBtn.addEventListener('click', () => { addSticker(seaweedImages[seaweed
 addAxBtn.addEventListener('click', () => addSticker('Assets/fish-photobooth/camerapage/stickers/axolotl.png'));
 addBubbleBtn.addEventListener('click', () => { addSticker(bubbleImages[bubbleIndex]); bubbleIndex = (bubbleIndex + 1) % bubbleImages.length; });
 
-// reset
 resetBtn.addEventListener('click', () => { stickers = []; drawCanvas(); });
 
-// download
+// Download the current canvas directly as a PNG file (no new tab).
 downloadBtn.addEventListener('click', () => {
-  const url = canvas.toDataURL('image/png');
-      window.open(url, '_blank');
+  if (!photoReady) return;
+  canvas.toBlob(blob => {
+    if (!blob) {
+      alert('Could not create your PNG. Please try again.');
+      return;
+    }
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'myday-photobooth.png';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }, 'image/png');
 });
 
-// home
 homeBtn.addEventListener('click', () => window.location.href = 'index.html');
-
-// logo
 document.addEventListener('DOMContentLoaded', () => {
   const logo = document.querySelector('.logo');
   if (logo) logo.addEventListener('click', () => window.location.href = 'index.html');
