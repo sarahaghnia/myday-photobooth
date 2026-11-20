@@ -3,8 +3,8 @@
 :root {
   --main-background: #fffae9;
   --dark-green-theme: #2a4a53;
-  --main-text: #555555;
-  --white: #ffffff;
+  --main-text: #fffae9;
+  --white: #92d6ad;
   --container-width: 80%;
   --container-aspect-ratio: auto;
   --fish-rotation: 7.52deg;
@@ -84,11 +84,11 @@ body {
 .button-container { margin-top: 30px; }
 
 button {
-  color: var(--main-text);
+  color: #fffae9;
   font-family: 'Comic Relief', cursive;
   font-size: 1.5rem;
   font-weight: 400;
-  background-color: var(--white);
+  background-color: #92d6ad;
   border: 1px solid #1e1e1e;
   border-radius: 0.5rem;
   text-align: center;
