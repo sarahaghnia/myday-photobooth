@@ -3,7 +3,7 @@
 * { font-family: 'Comic Relief', cursive; }
 
 body {
-  background-color: #f5f4f0;
+  background-color: #fffae9;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,8 +85,8 @@ button {
   font-family: 'Comic Relief', cursive;
   font-size: 1.2rem;
   font-weight: 400;
-  color: var(--main-text);
-  background-color: #fff;
+  color: #fffae9;
+  background-color: #92d6ad;
   border: 1px solid #1e1e1e;
   border-radius: 0.5rem;
   text-align: center;
@@ -101,7 +101,7 @@ button:hover { transform: scale(1.05); }
   aspect-ratio: 75/60;
   background-size: cover;
   background-position: center;
-  background-color: transparent;
+  background-color: #92d6ad;
   border: none;
   outline: none;
   cursor: pointer;
