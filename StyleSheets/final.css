@@ -21,7 +21,7 @@ button:hover { transform:scale(1.05); }
 .axolotl-btn { background-image:url("../Assets/fish-photobooth/finalpage/axolotlButton.png"); }
 .bubble-btn { background-image:url("../Assets/fish-photobooth/finalpage/bubbleButton.png"); }
 .reset-btn { background-image:url("../Assets/fish-photobooth/finalpage/resetButton.png"); }
-.heading-content { display:flex; flex-direction:column; align-items:center; justify-content:flex-start; width:30vw; gap:1rem; margin-top:.5vh; padding:0; }
+.heading-content { display:flex; flex-direction:column; align-items:center; justify-content:flex-start; width:30vw; gap:1rem; margin-top:.425vh; padding:0; }
 @media (max-width:768px) { .heading-content { width:90vw; } }
 .menu-header { width:100%; aspect-ratio:517/68; background-image:url('../Assets/fish-photobooth/menupage/Header.png'); background-size:cover; background-repeat:no-repeat; background-position:center; margin:0; }
 button, input, select, textarea { font:inherit; }
