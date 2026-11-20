@@ -1,24 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
-/* root variables */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap');
+
 :root {
   --main-background: #fffae9;
   --dark-green-theme: #2a4a53;
   --main-text: #555555;
   --white: #ffffff;
-
   --container-width: 80%;
   --container-aspect-ratio: auto;
-
   --fish-rotation: 7.52deg;
   --strip-rotation: 16.52deg;
   --bubble-rotation: -16.52deg;
 }
 
-/* body */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: 'Comic Relief', cursive;
 }
 
 body {
@@ -31,20 +29,9 @@ body {
   gap: 0;
 }
 
-/* logo */
-.logo {
-  position: relative;
-  width: 100px;
-  margin:0 auto;
-  text-align: center;
-}
+.logo { position: relative; width: 100px; margin:0 auto; text-align: center; }
+.logo img { width: 100%; height: auto; }
 
-.logo img {
-  width: 100%;
-  height: auto;
-}
-
-/* containers */
 .home-container {
   display: flex;
   flex-direction: column;
@@ -57,7 +44,7 @@ body {
 
 .photobooth-container {
   position: relative;
-  width: 80%
+  width: 80%;
   max-width: 400px;
   display: flex;
   flex-direction: column;
@@ -68,13 +55,8 @@ body {
   background: none;
 }
 
-@media screen and (max-width: 768px) {
-  .photobooth-container {
-    width: 90vw;
-  }
-}
+@media screen and (max-width: 768px) { .photobooth-container { width: 90vw; } }
 
-/* menu page */
 .menu-container {
   display: flex;
   flex-direction: column;
@@ -97,21 +79,13 @@ body {
   margin: 0 auto 1rem auto;
 }
 
-/* photobooth frame */
-.photobooth-mock {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+.photobooth-mock { width: 100%; height: auto; display: block; }
 
-/* button styling */
-.button-container {
-  margin-top: 30px;
-}
+.button-container { margin-top: 30px; }
 
 button {
   color: var(--main-text);
-  font-family: Schoolbell, cursive;
+  font-family: 'Comic Relief', cursive;
   font-size: 1.5rem;
   font-weight: 400;
   background-color: var(--white);
@@ -121,41 +95,22 @@ button {
   transition: transform 0.2s ease-in-out;
 }
 
-button:hover {
-  transform: scale(1.05);
-}
+button:hover { transform: scale(1.05); }
 
-#select-button {
+#select-button, #menu-camera-button, #menu-upload-button {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.56rem;
-  width: 10rem;
-  height: 3rem;
   padding: 0.5rem 1rem;
 }
 
-#menu-camera-button,
-#menu-upload-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.56rem;
-  width: 20rem;
-  height: 5rem;
-  padding: 0.5rem 1rem;
-}
+#select-button { width: 10rem; height: 3rem; }
+#menu-camera-button, #menu-upload-button { width: 20rem; height: 5rem; }
 
 @media screen and (max-width: 768px) {
-  #select-button {
-    width: 8rem;
-    height: 3.2rem;
-    font-size: 1.2rem;
-    padding: 0.4rem 0.5rem;
-    gap: 0.4rem;
-  }
-
-  button {
-    font-size: 1.5rem;
-  }
+  #select-button { width: 8rem; height: 3.2rem; font-size: 1.2rem; padding: 0.4rem 0.5rem; gap: 0.4rem; }
+  button { font-size: 1.5rem; }
 }
+
+button, input, select, textarea { font: inherit; }
