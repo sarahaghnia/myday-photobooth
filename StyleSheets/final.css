@@ -1,4 +1,7 @@
-/* body */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Relief:wght@400;700&display=swap');
+
+* { font-family: 'Comic Relief', cursive; }
+
 body {
   background-color: #f5f4f0;
   display: flex;
@@ -9,32 +12,23 @@ body {
   gap: 0;
 }
 
-/* typography */
 h1 {
   color: #555555;
-  font-family: Castoro, serif;
+  font-family: 'Comic Relief', cursive;
   font-size: 1rem;
   font-weight: 400;
 }
 
 p {
+  font-family: 'Comic Relief', cursive;
   font-size: 0.5em;
   color: #666;
   margin-top: -8px;
 }
 
-/* logo */
-.logo {
-  position: relative;
-  width: 200px;
-}
+.logo { position: relative; width: 200px; }
+.logo img { width: 100%; height: auto; }
 
-.logo img {
-  width: 100%;
-  height: auto;
-}
-
-/* sticker container */
 .sticker-container {
   display: flex;
   flex-direction: column;
@@ -46,7 +40,6 @@ p {
   padding: 0;
 }
 
-/* canvas container */
 #canvasContainer {
   position: relative;
   margin-top: 20px;
@@ -57,15 +50,10 @@ p {
   align-items: center;
 }
 
-/* mobile */
 @media (max-width: 768px) {
-  #canvasContainer {
-    width: 80vw;
-    max-width: 90vw;
-  }
+  #canvasContainer { width: 80vw; max-width: 90vw; }
 }
 
-/* canvas */
 canvas {
   width: 100%;
   height: auto;
@@ -74,7 +62,6 @@ canvas {
   display: block;
 }
 
-/* sticker buttons container */
 .sticker-btns {
   display: flex;
   flex-direction: row;
@@ -83,11 +70,8 @@ canvas {
   width: 100%;
 }
 
-.sticker-btns button {
-  cursor: pointer;
-}
+.sticker-btns button { cursor: pointer; }
 
-/*  button container */
 .button-container {
   display: flex;
   flex-direction: row;
@@ -97,9 +81,8 @@ canvas {
   padding-top: 2vh;
 }
 
-/* buttons */
 button {
-  font-family: Castoro, serif;
+  font-family: 'Comic Relief', cursive;
   font-size: 1.2rem;
   font-weight: 400;
   color: var(--main-text);
@@ -111,11 +94,8 @@ button {
   padding: 0.4rem 0.5rem;
 }
 
-button:hover {
-  transform: scale(1.05);
-}
+button:hover { transform: scale(1.05); }
 
-/* sticker buttons */
 .sticker-btn {
   width: 15%;
   aspect-ratio: 75/60;
@@ -131,7 +111,6 @@ button:hover {
   padding-right: 1vw;
 }
 
-/* individual sticker urls */
 .fish-btn { background-image: url("../Assets/fish-photobooth/finalpage/fishButton.png"); }
 .octopus-btn { background-image: url("../Assets/fish-photobooth/finalpage/octopusButton.png"); }
 .seaweed-btn { background-image: url("../Assets/fish-photobooth/finalpage/seaweedButton.png"); }
@@ -139,7 +118,6 @@ button:hover {
 .bubble-btn { background-image: url("../Assets/fish-photobooth/finalpage/bubbleButton.png"); }
 .reset-btn { background-image: url("../Assets/fish-photobooth/finalpage/resetButton.png"); }
 
-/* heading content */
 .heading-content {
   display: flex;
   flex-direction: column;
@@ -151,14 +129,8 @@ button:hover {
   padding: 0;
 }
 
-/* mobile heading */
-@media (max-width: 768px) {
-  .heading-content {
-    width: 90vw;
-  }
-}
+@media (max-width: 768px) { .heading-content { width: 90vw; } }
 
-/* menu header */
 .menu-header {
   width: 100%;
   aspect-ratio: 517/68;
@@ -168,3 +140,5 @@ button:hover {
   background-position: center;
   margin: 0;
 }
+
+button, input, select, textarea { font: inherit; }
