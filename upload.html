@@ -4,75 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Upload Photos</title>
-
   <link rel="icon" href="Assets/fish-photobooth/IMG_2476.png" type="image/x-icon" />
   <link rel="stylesheet" href="StyleSheets/camera.css" />
   <style>
     #uploadPhotoInput { display: none; }
-
-    .upload-instructions {
-      color: #555;
-      font-family: Castoro, serif;
-      font-size: 1rem;
-      text-align: center;
-      margin: 0.25rem 1rem;
-    }
-
-    .upload-status {
-      color: #555;
-      font-family: Castoro, serif;
-      font-size: 0.95rem;
-      text-align: center;
-      min-height: 1.4em;
-      margin: 0.25rem 1rem;
-    }
-
-    /* camera.css hides controls on the capture page; show them here */
-    .controls {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      width: 100%;
-      padding: 0.5rem 1rem;
-    }
-
-    .controls button {
-      font-family: Castoro, serif;
-      font-size: 1rem;
-      color: #1e1e1e;
-      background: #fff;
-      border: 1px solid #1e1e1e;
-      border-radius: 0.5rem;
-      padding: 0.65rem 1.1rem;
-      cursor: pointer;
-    }
-
-    .controls button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+    .upload-instructions { color:#555; font-family:Castoro,serif; font-size:1rem; text-align:center; margin:.25rem 1rem; }
+    .upload-status { color:#555; font-family:Castoro,serif; font-size:.95rem; text-align:center; min-height:1.4em; margin:.25rem 1rem; }
+    .controls { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:.75rem; width:100%; padding:.5rem 1rem; }
+    .controls button { font-family:Castoro,serif; font-size:1rem; color:#1e1e1e; background:#fff; border:1px solid #1e1e1e; border-radius:.5rem; padding:.65rem 1.1rem; cursor:pointer; }
+    .controls button:disabled { opacity:.5; cursor:not-allowed; }
   </style>
 </head>
 <body>
-  <div class="logo">
-    <img src="Assets/fish-photobooth/IMG_2475.png" alt="Logo">
-  </div>
-
+  <div class="logo"><img src="Assets/fish-photobooth/IMG_2475.png" alt="Logo"></div>
   <p class="upload-instructions">Upload 3 photos to create your photo strip ♡</p>
   <p class="upload-status" id="uploadStatus" aria-live="polite">Photo 1 of 3 — ready to upload</p>
-
   <div class="photobooth-container" id="booth">
     <canvas id="finalCanvas" width="1176" height="2940"></canvas>
     <input type="file" id="uploadPhotoInput" accept="image/*" />
     <img class="frame-overlay" src="Assets/fish-photobooth/camerapage/frame.png" alt="photo strip frame" />
   </div>
-
   <div class="controls">
     <button id="uploadPhoto" type="button">Upload Photo 1/3</button>
+    <button id="downloadBtn" type="button" disabled style="display:none;">Download PNG</button>
     <button id="readyButton" type="button" disabled style="display:none;">Decorate!</button>
   </div>
-
   <script src="Javascripts/upload.js"></script>
 </body>
 </html>
