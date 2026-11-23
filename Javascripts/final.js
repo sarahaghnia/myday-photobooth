@@ -116,7 +116,7 @@ let seaweedIndex = 0, bubbleIndex = 0;
 
 addSeaweedBtn.addEventListener('click', () => {
   const image = seaweedImages[seaweedIndex];
-  addSticker(image, seaweedIndex === 0 ? 1.1 : 1);
+  addSticker(image, seaweedIndex === 0 ? 1.32 : 1);
   seaweedIndex = (seaweedIndex + 1) % seaweedImages.length;
 });
 addAxBtn.addEventListener('click', () => addSticker('Assets/fish-photobooth/camerapage/stickers/axolotl.png'));
