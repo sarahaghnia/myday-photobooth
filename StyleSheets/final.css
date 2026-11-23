@@ -12,6 +12,8 @@ canvas { width:100%; height:auto; background:#fff; cursor:grab; display:block; }
 .sticker-btns { display:flex; flex-direction:row; align-items:center; justify-content:space-between; width:100%; }
 .sticker-btns button { cursor:pointer; }
 .button-container { display:flex; flex-direction:row; align-items:center; justify-content:center; gap:20px; padding-top:2vh; }
+.delete-sticker-btn { background-color:#f3a6a0; }
+.delete-sticker-btn:disabled { opacity:.45; cursor:default; transform:none; }
 button { font-family:'Comic Relief', cursive; font-size:1.2rem; font-weight:400; color:#fffae9; background-color:#92d6ad; border:none; border-radius:.5rem; text-align:center; transition:transform .2s ease-in-out; padding:.4rem .5rem; cursor:pointer; }
 button:hover { transform:scale(1.05); }
 .sticker-btn { width:15%; aspect-ratio:75/60; background-size:cover; background-position:center; background-color:#92d6ad; border:none; outline:none; cursor:pointer; margin:0; font-size:0; padding-left:1vw; padding-right:1vw; }
