@@ -15,6 +15,7 @@ const canvas = document.getElementById('finalCanvas'),
 
 // sticker state
 let stickers = [], dragOffset = { x: 0, y: 0 }, selectedSticker = null;
+let isDragging = false, isResizing = false, resizeStart = null;
 let photoReady = false;
 
 // load photo
@@ -34,11 +35,29 @@ if (dataURL) {
 }
 
 // draw canvas
-function drawCanvas() {
+function drawCanvas(showSelection = true) {
   if (!photoReady) return;
   ctx.clearRect(0, 0, WIDTH, HEIGHT);
   ctx.drawImage(finalImage, 0, 0, WIDTH, HEIGHT);
   stickers.forEach(s => ctx.drawImage(s.img, s.x, s.y, s.width, s.height));
+
+  // Selection outline and resize handle are editor-only; they are excluded from downloads.
+  if (showSelection && selectedSticker) {
+    const s = selectedSticker;
+    const handleSize = 34;
+    ctx.save();
+    ctx.setLineDash([12, 9]);
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = '#92d6ad';
+    ctx.strokeRect(s.x, s.y, s.width, s.height);
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#fffae9';
+    ctx.strokeStyle = '#92d6ad';
+    ctx.lineWidth = 6;
+    ctx.fillRect(s.x + s.width - handleSize / 2, s.y + s.height - handleSize / 2, handleSize, handleSize);
+    ctx.strokeRect(s.x + s.width - handleSize / 2, s.y + s.height - handleSize / 2, handleSize, handleSize);
+    ctx.restore();
+  }
 }
 
 // add sticker
@@ -70,33 +89,75 @@ function getPointerPos(e) {
   return { x: (clientX - rect.left) * scaleX, y: (clientY - rect.top) * scaleY };
 }
 
-// drag and drop
+// Drag stickers to move them; drag the green corner handle to resize.
 function pointerDown(e) {
   const { x: mouseX, y: mouseY } = getPointerPos(e);
+  const handleSize = 54;
+
+  if (selectedSticker &&
+      mouseX >= selectedSticker.x + selectedSticker.width - handleSize &&
+      mouseX <= selectedSticker.x + selectedSticker.width + handleSize / 2 &&
+      mouseY >= selectedSticker.y + selectedSticker.height - handleSize &&
+      mouseY <= selectedSticker.y + selectedSticker.height + handleSize / 2) {
+    isResizing = true;
+    resizeStart = {
+      x: mouseX,
+      y: mouseY,
+      width: selectedSticker.width,
+      height: selectedSticker.height
+    };
+    e.preventDefault();
+    return;
+  }
+
   for (let i = stickers.length - 1; i >= 0; i--) {
     const s = stickers[i];
-    if (mouseX >= s.x && mouseX <= s.x + s.width && mouseY >= s.y && mouseY <= s.y + s.height) {
+    if (mouseX >= s.x && mouseX <= s.x + s.width &&
+        mouseY >= s.y && mouseY <= s.y + s.height) {
       selectedSticker = s;
-      s.dragging = true;
+      isDragging = true;
       dragOffset.x = mouseX - s.x;
       dragOffset.y = mouseY - s.y;
       stickers.splice(i, 1);
       stickers.push(s);
       drawCanvas();
       e.preventDefault();
-      break;
+      return;
     }
   }
-}
-function pointerMove(e) {
-  if (!selectedSticker?.dragging) return;
-  const { x: mouseX, y: mouseY } = getPointerPos(e);
-  selectedSticker.x = mouseX - dragOffset.x;
-  selectedSticker.y = mouseY - dragOffset.y;
+
+  selectedSticker = null;
   drawCanvas();
-  e.preventDefault();
 }
-function pointerUp() { if (selectedSticker) selectedSticker.dragging = false; selectedSticker = null; }
+
+function pointerMove(e) {
+  if (!selectedSticker) return;
+  const { x: mouseX, y: mouseY } = getPointerPos(e);
+
+  if (isResizing && resizeStart) {
+    const scaleX = (mouseX - resizeStart.x + resizeStart.width) / resizeStart.width;
+    const scaleY = (mouseY - resizeStart.y + resizeStart.height) / resizeStart.height;
+    const scale = Math.max(0.2, scaleX, scaleY);
+    selectedSticker.width = resizeStart.width * scale;
+    selectedSticker.height = resizeStart.height * scale;
+    drawCanvas();
+    e.preventDefault();
+    return;
+  }
+
+  if (isDragging) {
+    selectedSticker.x = mouseX - dragOffset.x;
+    selectedSticker.y = mouseY - dragOffset.y;
+    drawCanvas();
+    e.preventDefault();
+  }
+}
+
+function pointerUp() {
+  isDragging = false;
+  isResizing = false;
+  resizeStart = null;
+}
 
 canvas.addEventListener('mousedown', pointerDown);
 canvas.addEventListener('mousemove', pointerMove);
@@ -122,12 +183,14 @@ addSeaweedBtn.addEventListener('click', () => {
 addAxBtn.addEventListener('click', () => addSticker('Assets/fish-photobooth/camerapage/stickers/axolotl.png'));
 addBubbleBtn.addEventListener('click', () => { addSticker(bubbleImages[bubbleIndex]); bubbleIndex = (bubbleIndex + 1) % bubbleImages.length; });
 
-resetBtn.addEventListener('click', () => { stickers = []; drawCanvas(); });
+resetBtn.addEventListener('click', () => { stickers = []; selectedSticker = null; drawCanvas(); });
 
 // Download the current canvas directly as a PNG file (no new tab).
 downloadBtn.addEventListener('click', () => {
   if (!photoReady) return;
+  drawCanvas(false);
   canvas.toBlob(blob => {
+    drawCanvas();
     if (!blob) {
       alert('Could not create your PNG. Please try again.');
       return;
