@@ -194,23 +194,56 @@ deleteStickerBtn.addEventListener('click', () => {
   drawCanvas();
 });
 
-// Download synchronously so mobile browsers retain the original user gesture.
+// Build the image synchronously, then use Android's native share sheet when supported.
+function saveOrShareCanvas(canvasElement, filename) {
+  const dataURL = canvasElement.toDataURL('image/png');
+  const base64 = dataURL.split(',')[1];
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  const blob = new Blob([bytes], { type: 'image/png' });
+  const file = new File([blob], filename, { type: 'image/png' });
+
+  if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+    // Invoke share immediately within the original tap gesture.
+    navigator.share({ files: [file], title: 'My Day Photobooth' })
+      .catch(error => {
+        if (error.name !== 'AbortError') {
+          console.error('Native share failed:', error);
+          openImageForSaving(blob);
+        }
+      });
+    return;
+  }
+
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  link.style.display = 'none';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  // Keep the URL alive longer for mobile browsers that process downloads slowly.
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
+}
+
+function openImageForSaving(blob) {
+  const url = URL.createObjectURL(blob);
+  const opened = window.open(url, '_blank');
+  if (!opened) alert('Your browser blocked the image tab. Please allow pop-ups, then tap Download again.');
+  setTimeout(() => URL.revokeObjectURL(url), 120000);
+}
+
 downloadBtn.addEventListener('click', () => {
   if (!photoReady) return;
   try {
     drawCanvas(false);
-    const pngData = canvas.toDataURL('image/png');
+    saveOrShareCanvas(canvas, 'myday-photobooth.png');
     drawCanvas();
-
-    const link = document.createElement('a');
-    link.href = pngData;
-    link.download = 'myday-photobooth.png';
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
   } catch (error) {
     drawCanvas();
-    alert('Could not create your PNG. Please try again or use a different browser.');
+    alert('Could not create your PNG. Please try again.');
     console.error('Photo download failed:', error);
   }
 });
