@@ -11,7 +11,8 @@ const canvas = document.getElementById('finalCanvas'),
       addBubbleBtn = document.getElementById('addBubble'),
       downloadBtn = document.getElementById('downloadBtn'),
       homeBtn = document.getElementById('homeBtn'),
-      resetBtn = document.getElementById('reset');
+      resetBtn = document.getElementById('reset'),
+      deleteStickerBtn = document.getElementById('deleteStickerBtn');
 
 // sticker state
 let stickers = [], dragOffset = { x: 0, y: 0 }, selectedSticker = null;
@@ -58,6 +59,7 @@ function drawCanvas(showSelection = true) {
     ctx.strokeRect(s.x + s.width - handleSize / 2, s.y + s.height - handleSize / 2, handleSize, handleSize);
     ctx.restore();
   }
+  if (deleteStickerBtn) deleteStickerBtn.disabled = !selectedSticker;
 }
 
 // add sticker
@@ -184,6 +186,13 @@ addAxBtn.addEventListener('click', () => addSticker('Assets/fish-photobooth/came
 addBubbleBtn.addEventListener('click', () => { addSticker(bubbleImages[bubbleIndex]); bubbleIndex = (bubbleIndex + 1) % bubbleImages.length; });
 
 resetBtn.addEventListener('click', () => { stickers = []; selectedSticker = null; drawCanvas(); });
+
+deleteStickerBtn.addEventListener('click', () => {
+  if (!selectedSticker) return;
+  stickers = stickers.filter(sticker => sticker !== selectedSticker);
+  selectedSticker = null;
+  drawCanvas();
+});
 
 // Download the current canvas directly as a PNG file (no new tab).
 downloadBtn.addEventListener('click', () => {
