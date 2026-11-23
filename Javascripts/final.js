@@ -194,25 +194,25 @@ deleteStickerBtn.addEventListener('click', () => {
   drawCanvas();
 });
 
-// Download the current canvas directly as a PNG file (no new tab).
+// Download synchronously so mobile browsers retain the original user gesture.
 downloadBtn.addEventListener('click', () => {
   if (!photoReady) return;
-  drawCanvas(false);
-  canvas.toBlob(blob => {
+  try {
+    drawCanvas(false);
+    const pngData = canvas.toDataURL('image/png');
     drawCanvas();
-    if (!blob) {
-      alert('Could not create your PNG. Please try again.');
-      return;
-    }
-    const url = URL.createObjectURL(blob);
+
     const link = document.createElement('a');
-    link.href = url;
+    link.href = pngData;
     link.download = 'myday-photobooth.png';
     document.body.appendChild(link);
     link.click();
     link.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }, 'image/png');
+  } catch (error) {
+    drawCanvas();
+    alert('Could not create your PNG. Please try again or use a different browser.');
+    console.error('Photo download failed:', error);
+  }
 });
 
 homeBtn.addEventListener('click', () => window.location.href = 'index.html');
