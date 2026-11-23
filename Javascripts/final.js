@@ -42,15 +42,19 @@ function drawCanvas() {
 }
 
 // add sticker
-function addSticker(src) {
+function addSticker(src, scale = 1) {
   const img = new Image();
   img.onload = () => {
+    const width = (img.width / 2.5) * scale;
+    const height = (img.height / 2.5) * scale;
+    const baseX = WIDTH / 2 - img.width / 6;
+    const baseY = HEIGHT / 2 - img.height / 6;
     stickers.push({
       img,
-      x: WIDTH / 2 - img.width / 6,
-      y: HEIGHT / 2 - img.height / 6,
-      width: img.width / 2.5,
-      height: img.height / 2.5,
+      x: baseX - ((width - img.width / 2.5) / 2),
+      y: baseY - ((height - img.height / 2.5) / 2),
+      width,
+      height,
       dragging: false
     });
     drawCanvas();
@@ -110,7 +114,11 @@ const seaweedImages = ['Assets/fish-photobooth/camerapage/stickers/seaweed1.png'
       bubbleImages = ['Assets/fish-photobooth/camerapage/stickers/bubble1.png','Assets/fish-photobooth/camerapage/stickers/bubble2.png'];
 let seaweedIndex = 0, bubbleIndex = 0;
 
-addSeaweedBtn.addEventListener('click', () => { addSticker(seaweedImages[seaweedIndex]); seaweedIndex = (seaweedIndex + 1) % seaweedImages.length; });
+addSeaweedBtn.addEventListener('click', () => {
+  const image = seaweedImages[seaweedIndex];
+  addSticker(image, seaweedIndex === 0 ? 1.1 : 1);
+  seaweedIndex = (seaweedIndex + 1) % seaweedImages.length;
+});
 addAxBtn.addEventListener('click', () => addSticker('Assets/fish-photobooth/camerapage/stickers/axolotl.png'));
 addBubbleBtn.addEventListener('click', () => { addSticker(bubbleImages[bubbleIndex]); bubbleIndex = (bubbleIndex + 1) % bubbleImages.length; });
 
