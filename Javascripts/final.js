@@ -137,7 +137,7 @@ function pointerMove(e) {
   if (isResizing && resizeStart) {
     const scaleX = (mouseX - resizeStart.x + resizeStart.width) / resizeStart.width;
     const scaleY = (mouseY - resizeStart.y + resizeStart.height) / resizeStart.height;
-    const scale = Math.max(0.2, scaleX, scaleY);
+    const scale = Math.max(0.2, Math.abs(scaleX - 1) >= Math.abs(scaleY - 1) ? scaleX : scaleY);
     selectedSticker.width = resizeStart.width * scale;
     selectedSticker.height = resizeStart.height * scale;
     drawCanvas();
