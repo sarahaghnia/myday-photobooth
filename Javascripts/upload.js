@@ -28,20 +28,46 @@ function updateUploadStatus() {
 }
 
 function downloadCanvas(canvas, filename) {
-  canvas.toBlob(blob => {
-    if (!blob) {
-      elements.status.textContent = 'Could not create the PNG. Please try again.';
+  try {
+    const dataURL = canvas.toDataURL('image/png');
+    const binary = atob(dataURL.split(',')[1]);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    const blob = new Blob([bytes], { type: 'image/png' });
+    const file = new File([blob], filename, { type: 'image/png' });
+
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+      navigator.share({ files: [file], title: 'My Day Photobooth' })
+        .then(() => { elements.status.textContent = 'Choose where to save or share your photo ♡'; })
+        .catch(error => {
+          if (error.name !== 'AbortError') {
+            console.error('Native share failed:', error);
+            openImageForSaving(blob);
+          }
+        });
       return;
     }
+
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
     link.download = filename;
+    link.style.display = 'none';
     document.body.appendChild(link);
     link.click();
     link.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }, 'image/png');
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  } catch (error) {
+    console.error('Photo download failed:', error);
+    elements.status.textContent = 'Could not create the PNG. Please try again.';
+  }
+}
+
+function openImageForSaving(blob) {
+  const url = URL.createObjectURL(blob);
+  const opened = window.open(url, '_blank');
+  if (!opened) elements.status.textContent = 'Pop-up blocked. Allow pop-ups, then tap Download again.';
+  setTimeout(() => URL.revokeObjectURL(url), 120000);
 }
 
 function drawPhoto(img, slotIndex) {
